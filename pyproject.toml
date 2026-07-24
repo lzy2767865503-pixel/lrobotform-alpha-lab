@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lrobotform-alpha-lab"
+version = "1.0.0"
+description = "Local synthetic-data and Cronbach's Alpha testing toolkit for authorized questionnaire research"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Proprietary" }
+authors = [
+  { name = "LAI ZEYU" }
+]
+dependencies = []
+
+[project.scripts]
+lrobotform-alpha = "lrobotform_alpha.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

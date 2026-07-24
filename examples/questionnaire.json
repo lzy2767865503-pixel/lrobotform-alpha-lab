@@ -1,0 +1,58 @@
+{
+  "title": "Campus Service Reliability Pilot",
+  "questions": [
+    {
+      "id": "AGE_GROUP",
+      "title": "Age group",
+      "type": "single_choice",
+      "options": ["18-20", "21-23", "24-26", "27 or above"],
+      "ordered": true
+    },
+    {
+      "id": "PROGRAMME",
+      "title": "Programme level",
+      "type": "single_choice",
+      "options": ["Foundation", "Undergraduate", "Postgraduate"]
+    },
+    {
+      "id": "SAT_1",
+      "title": "The service is easy to understand",
+      "type": "likert",
+      "options": ["1", "2", "3", "4", "5"],
+      "required": true
+    },
+    {
+      "id": "SAT_2",
+      "title": "The service responds to my needs",
+      "type": "likert",
+      "options": ["1", "2", "3", "4", "5"],
+      "required": true
+    },
+    {
+      "id": "SAT_3",
+      "title": "The service feels dependable",
+      "type": "likert",
+      "options": ["1", "2", "3", "4", "5"],
+      "required": true
+    },
+    {
+      "id": "SAT_4",
+      "title": "I would use the service again",
+      "type": "likert",
+      "options": ["1", "2", "3", "4", "5"],
+      "required": true
+    },
+    {
+      "id": "SAT_5",
+      "title": "I would recommend the service",
+      "type": "likert",
+      "options": ["1", "2", "3", "4", "5"],
+      "required": true
+    },
+    {
+      "id": "COMMENT",
+      "title": "Optional synthetic note",
+      "type": "short_text"
+    }
+  ]
+}

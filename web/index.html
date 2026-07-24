@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="LAI ZEYU" />
+    <meta
+      name="description"
+      content="Lrobotform Alpha Lab is a local synthetic-data workspace for authorized questionnaire reliability testing."
+    />
+    <title>Lrobotform Alpha Lab</title>
+    <link rel="icon" type="image/png" href="./assets/lrobotform-logo.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#workspace" aria-label="Lrobotform Alpha Lab home">
+        <img src="./assets/lrobotform-logo.png" alt="" />
+        <span>
+          <strong>Lrobotform</strong>
+          <small>Alpha Lab</small>
+        </span>
+      </a>
+      <div class="topbar-actions">
+        <span class="owner">Created by LAI ZEYU</span>
+        <div class="language-switch" role="group" aria-label="Language">
+          <button class="language-button is-active" type="button" data-language="en">EN</button>
+          <button class="language-button" type="button" data-language="zh">中文</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="workspace">
+      <section class="status-band" aria-label="Research-use notice">
+        <div>
+          <span class="status-mark" aria-hidden="true"></span>
+          <strong data-i18n="noticeTitle">Simulation-only research workspace</strong>
+        </div>
+        <p data-i18n="noticeBody">
+          Generates local synthetic datasets for authorized questionnaire design and Cronbach's Alpha testing. It never submits responses to Google Forms.
+        </p>
+      </section>
+
+      <section class="intro">
+        <div>
+          <p class="eyebrow" data-i18n="eyebrow">QUESTIONNAIRE RELIABILITY LAB</p>
+          <h1>Lrobotform Alpha Lab</h1>
+          <p class="intro-copy" data-i18n="intro">
+            Model a pilot dataset, inspect response distributions, and verify whether an ordered scale reaches the selected reliability band before real participant recruitment.
+          </p>
+        </div>
+        <dl class="scope-list">
+          <div>
+            <dt data-i18n="scopeData">Data</dt>
+            <dd data-i18n="scopeDataValue">Synthetic and local</dd>
+          </div>
+          <div>
+            <dt data-i18n="scopeNetwork">Network</dt>
+            <dd data-i18n="scopeNetworkValue">No form submission</dd>
+          </div>
+          <div>
+            <dt data-i18n="scopeOwner">Project owner</dt>
+            <dd>LAI ZEYU</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="tool-shell" aria-labelledby="tool-title">
+        <div class="tool-heading">
+          <div>
+            <p class="eyebrow" data-i18n="toolEyebrow">LOCAL SIMULATOR</p>
+            <h2 id="tool-title" data-i18n="toolTitle">Reliability test configuration</h2>
+          </div>
+          <span class="run-state" id="run-state" data-i18n="ready">Ready</span>
+        </div>
+
+        <div class="tool-grid">
+          <form id="simulation-form" class="controls">
+            <div class="field-grid">
+              <label>
+                <span data-i18n="responses">Synthetic responses</span>
+                <input id="responses" type="number" min="20" max="1000" value="200" />
+              </label>
+              <label>
+                <span data-i18n="items">Ordered scale items</span>
+                <input id="items" type="number" min="2" max="20" value="6" />
+              </label>
+              <label>
+                <span data-i18n="targetMin">Target Alpha minimum</span>
+                <input id="target-min" type="number" min="0.5" max="0.94" step="0.01" value="0.70" />
+              </label>
+              <label>
+                <span data-i18n="targetMax">Target Alpha maximum</span>
+                <input id="target-max" type="number" min="0.56" max="0.99" step="0.01" value="0.90" />
+              </label>
+              <label class="field-wide">
+                <span data-i18n="seed">Reproducibility seed</span>
+                <input id="seed" type="number" min="1" max="999999999" value="20260724" />
+              </label>
+            </div>
+
+            <fieldset>
+              <legend data-i18n="distribution">Non-scale distribution</legend>
+              <label class="radio-row">
+                <input type="radio" name="distribution" value="normal" checked />
+                <span>
+                  <strong data-i18n="normal">Normal-shaped</strong>
+                  <small data-i18n="normalHelp">Ordered choices cluster around the centre.</small>
+                </span>
+              </label>
+              <label class="radio-row">
+                <input type="radio" name="distribution" value="uniform" />
+                <span>
+                  <strong data-i18n="uniform">Uniform</strong>
+                  <small data-i18n="uniformHelp">Each nominal option has equal probability.</small>
+                </span>
+              </label>
+            </fieldset>
+
+            <div class="command-row">
+              <button class="primary-button" type="submit" data-i18n="run">Run local simulation</button>
+              <button class="secondary-button" id="download" type="button" disabled data-i18n="download">Download CSV</button>
+            </div>
+          </form>
+
+          <div class="results" aria-live="polite">
+            <div class="metric-row">
+              <div class="metric">
+                <span data-i18n="alpha">Cronbach's Alpha</span>
+                <strong id="alpha-value">--</strong>
+              </div>
+              <div class="metric">
+                <span data-i18n="sample">Sample size</span>
+                <strong id="sample-value">--</strong>
+              </div>
+              <div class="metric">
+                <span data-i18n="attempts">Calibration passes</span>
+                <strong id="attempt-value">--</strong>
+              </div>
+            </div>
+
+            <div class="result-status" id="result-status">
+              <strong data-i18n="waitingTitle">Awaiting simulation</strong>
+              <p data-i18n="waitingBody">Configure the test and run it locally. No data leaves this browser.</p>
+            </div>
+
+            <div class="distribution-panel">
+              <div class="panel-heading">
+                <h3 data-i18n="distributionTitle">Aggregate scale distribution</h3>
+                <span id="distribution-caption">--</span>
+              </div>
+              <div class="bars" id="bars" aria-label="Response distribution chart">
+                <div class="empty-chart" data-i18n="emptyChart">Run a simulation to view the distribution.</div>
+              </div>
+            </div>
+
+            <div class="table-panel">
+              <div class="panel-heading">
+                <h3 data-i18n="previewTitle">Synthetic data preview</h3>
+                <span data-i18n="previewLimit">First 5 rows</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead id="preview-head">
+                    <tr><th data-i18n="previewEmpty">No dataset</th></tr>
+                  </thead>
+                  <tbody id="preview-body">
+                    <tr><td data-i18n="previewPrompt">Run a local simulation to generate preview rows.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="method-band">
+        <div>
+          <p class="eyebrow" data-i18n="methodEyebrow">RESEARCH BOUNDARY</p>
+          <h2 data-i18n="methodTitle">What this public project proves</h2>
+        </div>
+        <ol>
+          <li data-i18n="methodOne">Read-only questionnaire schema normalization.</li>
+          <li data-i18n="methodTwo">Reproducible synthetic pilot-data generation.</li>
+          <li data-i18n="methodThree">Cronbach's Alpha calibration and distribution reporting.</li>
+          <li data-i18n="methodFour">No automated submission to live Google Forms.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <span>Copyright © 2026 LAI ZEYU. All rights reserved.</span>
+      <span data-i18n="notAffiliated">Independent research project; not affiliated with Google.</span>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
