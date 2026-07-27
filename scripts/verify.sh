@@ -11,6 +11,11 @@ if ! command -v "$PYTHON" >/dev/null 2>&1; then
   exit 1
 fi
 
+if ! "$PYTHON" -c 'import sys; raise SystemExit(sys.version_info < (3, 10))'; then
+  echo "Python 3.10 or newer is required." >&2
+  exit 1
+fi
+
 if [[ ! -x "$VENV/bin/python" ]]; then
   "$PYTHON" -m venv "$VENV"
 fi

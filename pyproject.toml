@@ -1,13 +1,13 @@
 [build-system]
-requires = ["setuptools==75.8.2"]
+requires = ["setuptools==83.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "lrobotform-alpha-lab"
-version = "1.0.0"
+version = "1.0.1"
 description = "Local synthetic-data and Cronbach's Alpha testing toolkit for authorized questionnaire research"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [
   { name = "LAI ZEYU" }
