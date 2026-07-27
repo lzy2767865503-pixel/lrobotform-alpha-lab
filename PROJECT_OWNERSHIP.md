@@ -6,7 +6,7 @@
 
 **GitHub account:** [lzy2767865503-pixel](https://github.com/lzy2767865503-pixel)
 
-**Copyright:** Copyright (c) 2026 LAI ZEYU. All rights reserved.
+**Copyright:** Copyright (c) 2026 LAI ZEYU.
 
 ## Public Evidence
 
@@ -29,3 +29,8 @@ orders, payment records, participant data, credentials, and server secrets.
 GitHub history and copyright notices support portfolio authorship and ownership
 assessment. They are not a substitute for any formal trademark, patent, or
 government copyright registration required in a particular jurisdiction.
+
+The MIT License grants broad rights to reproduce and modify the software. It
+does not transfer authorship, project identity, or rights in third-party
+trademarks, and it does not remove the ethical-use requirements for research
+data and authorized questionnaires.

@@ -2,7 +2,7 @@
 
 > Created and owned by **LAI ZEYU**
 >
-> Copyright (c) 2026 LAI ZEYU. All rights reserved.
+> Copyright (c) 2026 LAI ZEYU. Released under the MIT License.
 
 Lrobotform Alpha Lab is a bilingual, local-first questionnaire reliability
 workspace for **authorized research and instrument design**. It converts a
@@ -63,6 +63,17 @@ python3 -m pip install -e .
 python3 -m unittest discover -s tests -v
 ```
 
+For a complete clean-clone check, run:
+
+```bash
+./scripts/verify.sh
+```
+
+This installs the package in an isolated environment, runs every safety and
+reliability test, generates a deterministic sample, and checks the static web
+demo. See [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) for expected
+artifacts and verification boundaries.
+
 Generate a local synthetic pilot:
 
 ```bash
@@ -78,6 +89,8 @@ The command creates:
 - `output/alpha_report.json`
 
 Both outputs explicitly identify the rows as synthetic.
+The CSV includes `synthetic_record_id`, `data_origin`, and `simulation_seed`
+provenance columns so exported rows cannot be mistaken for participant data.
 
 ## Google Forms Blueprint
 
@@ -132,9 +145,11 @@ See [ETHICAL_USE.md](ETHICAL_USE.md), [SECURITY.md](SECURITY.md), and
 ## Ownership
 
 Repository metadata, commit authorship, package metadata, CODEOWNERS,
-`CITATION.cff`, the proprietary license, and the visible interface identify
+`CITATION.cff`, the MIT copyright notice, and the visible interface identify
 **LAI ZEYU** as the project owner and creator. See
 [PROJECT_OWNERSHIP.md](PROJECT_OWNERSHIP.md).
 
-This repository is publicly viewable for portfolio assessment, but it is not an
-open-source project. See [LICENSE](LICENSE).
+The source code is available under the [MIT License](LICENSE), which permits
+independent reproduction while retaining the copyright and attribution notice.
+The Lrobotform name and any third-party trademarks are not transferred by the
+software licence.
