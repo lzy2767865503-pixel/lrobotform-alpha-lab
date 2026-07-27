@@ -53,7 +53,7 @@ The public portfolio demonstrates:
 
 ## Quick Start
 
-Python 3.9 or later is required.
+Python 3.10 or later is required.
 
 ```bash
 python3 -m venv .venv

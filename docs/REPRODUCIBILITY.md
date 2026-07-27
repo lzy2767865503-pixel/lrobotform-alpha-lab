@@ -5,7 +5,7 @@ participant data, browser credentials, API keys, or external services.
 
 ## Reference Environment
 
-- Python 3.12 (minimum supported version: Python 3.9)
+- Python 3.12 (minimum supported version: Python 3.10)
 - A POSIX shell for the one-command verifier
 - Any modern browser for the optional static demo
 
