@@ -15,11 +15,22 @@ def write_csv(
 ) -> None:
     destination = Path(path)
     destination.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames = [question.id for question in questionnaire.questions]
+    provenance_fields = ["synthetic_record_id", "data_origin", "simulation_seed"]
+    fieldnames = provenance_fields + [
+        question.id for question in questionnaire.questions
+    ]
     with destination.open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
-        writer.writerows(result.rows)
+        for index, row in enumerate(result.rows, start=1):
+            writer.writerow(
+                {
+                    "synthetic_record_id": f"SIM-{index:06d}",
+                    "data_origin": "synthetic_simulation",
+                    "simulation_seed": result.seed,
+                    **row,
+                }
+            )
 
 
 def write_report(

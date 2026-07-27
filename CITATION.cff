@@ -9,5 +9,5 @@ authors:
 repository-code: "https://github.com/lzy2767865503-pixel/lrobotform-alpha-lab"
 version: "1.0.0"
 date-released: "2026-07-24"
-license: "LicenseRef-Proprietary"
+license: "MIT"
 abstract: "A local synthetic-data and Cronbach's Alpha testing toolkit for authorized questionnaire research."
