@@ -17,6 +17,10 @@ class CronbachAlphaTests(unittest.TestCase):
     def test_single_item_is_not_applicable(self):
         self.assertIsNone(cronbach_alpha([[1], [2], [3]]))
 
+    def test_iterable_input_uses_all_rows_without_column_copies(self):
+        matrix = ([score, score + 1, score + 2] for score in range(1, 101))
+        self.assertAlmostEqual(cronbach_alpha(matrix), 1.0, places=6)
+
 
 if __name__ == "__main__":
     unittest.main()
